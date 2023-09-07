@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net8.0-ios;net8.0-android;</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+  	<PropertyGroup>
+	    <PackageId>CardsView.Maui</PackageId>
+	    <Summary>This package allows to create classic CarouselView, CoverFlowView, CardsView and CubeView.</Summary>
+	    <Authors>Andrei Misiukevich</Authors>
+	    <Owners>Andrei Misiukevich</Owners>
+	    <Company>Andrei Misiukevich</Company>
+	    <NeutralLanguage>en</NeutralLanguage>
+	    <Product>CardsView.Maui (net7.0)</Product>
+	    <Copyright>© Andrei Misiukevich. All rights reserved.</Copyright>
+	    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	    <PackageProjectUrl>https://github.com/AndreiMisiukevich/CardView.MAUI</PackageProjectUrl>
+	    <RepositoryUrl>https://github.com/AndreiMisiukevich/CardView.MAUI</RepositoryUrl>
+	    <PackageReleaseNotes>Bug fixes</PackageReleaseNotes>
+	    <Title>CardsView.Maui</Title>
+	    <Description>This package allows to create classic CarouselView, CoverFlowView, CardsView and CubeView.</Description>
+	    <PackageIcon>icon.png</PackageIcon>
+	    <Version>0.0.4</Version>
+	    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	    <PackageTags>carouselview, cardsview, coverflowview, carousel view, cards view, maui, dotnet, carousel, card, cards, cardview, swipeview, swiperview, swipe, tinder swiper, coverflow, cubeView, cube, tabsView, tabView, tabControl, tabsControl, tabs, tab</PackageTags>
+	    <Configurations>Debug;Release</Configurations>
+  	</PropertyGroup>
+
+  	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+  		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<ItemGroup>
+    	<None Include="..\images\Cardsview-logotype-main.png" PackagePath="icon.png" Pack="true" />
+  	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Common\Resources\left_arrow.png" />
+	  <EmbeddedResource Include="Common\Resources\left_arrow_black.png" />
+	  <EmbeddedResource Include="Common\Resources\right_arrow.png" />
+	  <EmbeddedResource Include="Common\Resources\right_arrow_black.png" />
+	</ItemGroup>	
+		<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-rc.1.9149" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-rc.1.9149" />
+	</ItemGroup>
+</Project>
